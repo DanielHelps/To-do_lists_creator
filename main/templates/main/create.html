@@ -1,12 +1,31 @@
 {% extends 'main/base.html'%}
 
-{% block title%}Create new list{% endblock %}
+<head>
+        {% block style %}
 
-{% block content%}
+            .form-group {
+            padding-top:20px;
+        }
+
+        {% endblock %}
+
+    {% block title %}Create new list{% endblock %}
+
+</head>
+
+{% block content %}
+
+<h3>Create list</h3>
 <form method="post" action="/create/" class="form-group">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button name="save" type="submit" class="btn btn-success">Create</button>
+{% csrf_token %}
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <button name="save" type="submit" class="btn btn-success">Create</button>
+    </div>
+    {{form.name}}
+</div>
+
 </form>
+
 
 {% endblock %}

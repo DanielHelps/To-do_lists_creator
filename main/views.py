@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoL
 from .forms import NewList
 
+
 def home(respone):
     return render(respone, "main/home.html", {})
     # response.write("<h2>To do item: %s</h2>" %item)
@@ -33,9 +34,9 @@ def index(response, id):
     # return HttpResponse("<h1>Reddit sentiment analysis tutorial!</h1>")
 
 
-def create(respone):
-    if respone.method == "POST":
-        form = NewList(respone.POST)
+def create(response):
+    if response.method == "POST":
+        form = NewList(response.POST)
 
         if form.is_valid():
             n = form.cleaned_data["name"]
@@ -45,5 +46,5 @@ def create(respone):
         return HttpResponseRedirect("/%i" %t.id)
     else:
         form = NewList()
-    return render(respone, "main/create.html", {"form":form})
+    return render(response, "main/create.html", {"form":form})
     # return HttpResponse("<h1>Reddit sentiment analysis tutorial!</h1>")

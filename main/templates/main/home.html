@@ -1,8 +1,27 @@
 {% extends 'main/base.html'%}
+{% load static %}
+
+{% block head%}
+
+<link rel="stylesheet" href=" {% static 'style.css' %}">
+<script src="{% static 'scripts.js' %}"></script>
+
+{% endblock %}
 
 {% block title%}home{% endblock %}
 
 {% block content %}
-  <h1>Home page</h1>
+  {% if user.is_authenticated %}
+                        
+    <h1>Home page</h1>
+    <div class="wrapper">
+			<div class="container chart" data-size="400" data-value="88" data-arrow="up">
+			</div>
+		</div>
+  {% else %}
+    <a href="login">Login!</a>
+  {% endif %}
 {% endblock %}
+                    
+
 
