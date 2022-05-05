@@ -38,7 +38,6 @@ def index(response, id):
 def create(response):
     if response.method == "POST":
         form = NewList(response.POST)
-        breakpoint()
         if form.is_valid():
             n = form.cleaned_data["name"]
             # response.user.toDoL_set.create(name=n)
